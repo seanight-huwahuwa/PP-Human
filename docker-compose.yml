@@ -1,9 +1,9 @@
-# 파일명: docker-compose.yml
+# ファイル名: docker-compose.yml
 services:
   paddle-dev:
     build: .
     container_name: pp_human_container
-    # WSL2 Docker에서 GPU를 사용하기 위한 설정
+    # WSL2 の Docker で GPU を利用するための設定
     deploy:
       resources:
         reservations:
@@ -11,17 +11,17 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    # 현재 폴더(~/PP-Human)를 컨테이너 내부의 /workspace로 연결
+    # 現在のフォルダ（~/PP-Human）をコンテナ内の /workspace にマウント
     volumes:
       - ./:/workspace
-      - /tmp/.X11-unix:/tmp/.X11-unix  # (선택사항) GUI 화면 띄울 때 필요
-    # 공유 메모리 사이즈 증설 (AI 모델 로드 시 필수)
-    shm_size: '16gb' 
-    # 컨테이너가 꺼지지 않고 계속 실행되도록 설정
+      - /tmp/.X11-unix:/tmp/.X11-unix  # （任意）GUI 表示が必要な場合に使用
+    # 共有メモリサイズを拡張（AI モデルの読み込み時に推奨）
+    shm_size: '16gb'
+    # コンテナが停止しないように設定
     tty: true
     stdin_open: true
     restart: unless-stopped
 
     devices:
-      - /dev/video0:/dev/video0  # 호스트의 video0을 컨테이너의 video0으로 연결
-    privileged: true             # 하드웨어 접근 권한 부여
+      - /dev/video0:/dev/video0  # ホストの video0 をコンテナに接続
+    privileged: true             # ハードウェアアクセス権を付与

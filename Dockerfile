@@ -1,10 +1,10 @@
-# 파일명: Dockerfile
+# ファイル名: Dockerfile
 
-# RTX 3090을 지원하는 CUDA 12.0 기반 PaddlePaddle 이미지
+# RTX 3090 をサポートする CUDA 12.0 ベースの PaddlePaddle イメージ
 FROM paddlepaddle/paddle:2.6.1-gpu-cuda12.0-cudnn8.9-trt8.6
 
-# 패키지 목록 업데이트 및 OpenCV 실행을 위한 필수 시스템 라이브러리 설치
-# (libgl1, libglib2.0 등은 영상 처리 시 필수입니다)
+# パッケージリストを更新し、OpenCV 実行に必要なシステムライブラリをインストール
+# (libgl1、libglib2.0 などは映像処理で必須)
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \
     libglib2.0-0 \
@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y \
     vim \
     && rm -rf /var/lib/apt/lists/*
 
-# 작업 디렉토리 설정
+# 作業ディレクトリを設定
 WORKDIR /workspace
 
-# 컨테이너 실행 시 bash 쉘 실행
+# コンテナ起動時に bash シェルを実行
 CMD ["/bin/bash"]
