@@ -1,0 +1,8 @@
+PaddleDetection/
+
+# Ignore only the large files requested:
+# - any files under PaddleDetection/
+# - MP4s under output_result_no_attr/
+# - the large root video
+output_result_no_attr/*.mp4
+real_test.mp4
