@@ -5,7 +5,7 @@
 ### デモ（自動再生 GIF）
 以下は結果の例として保存された 5 秒の GIF です。
 
-![Demo](output_result/real_test_5s_large.gif)
+![Demo](output_result/real_test.gif)
 
 ## 1. 環境構築（Installation）
 
